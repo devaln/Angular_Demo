@@ -1,0 +1,15 @@
+#about{
+    font-family: sans-serif;
+}
+
+#about #about-h1{
+    font-size: 25px solid black;
+    font-style: italic;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+#about #about_p{
+    font-size: 14px solid black;
+    font-style: italic;
+}
