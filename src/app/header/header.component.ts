@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -6,5 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
+  constructor(
+    private router: Router,
+  ){ }
+   isLogin = sessionStorage.getItem("token") ? true : false
 
+  logoutUser() {
+    if(confirm('are you sure you want to logout this user')){
+      sessionStorage.clear()
+      this.router.navigateByUrl('/login')
+      location.reload()
+    }
+  }
 }

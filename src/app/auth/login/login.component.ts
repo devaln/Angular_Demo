@@ -11,18 +11,14 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   info: any;
 
-  constructor(private data: UsersService, private router: Router) {
-    this.data.userData().subscribe((userInfo) => {
-      this.info = userInfo;
-    });
-  }
+  constructor(
+    private data: UsersService,
+    private router: Router,
+  ) { }
 
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [
-      Validators.required,
-      Validators.minLength(5),
-    ]),
+    password: new FormControl('', [Validators.required, Validators.minLength(5)]),
   });
 
   get email() {
@@ -34,9 +30,19 @@ export class LoginComponent {
   }
 
   loginUser(data: any) {
-    this.data.login(data).subscribe((info) => {
-      console.warn(info);
-      this.router.navigateByUrl('home');
-    });
+    this.data.login(data).subscribe((response : any) => {
+      console.info("response", response)
+      response.status == true ? this.configureAuth(response) : console.error(response.errors)
+    }, err=>{
+      console.error(err)
+    })
+  }
+
+  configureAuth(response: any){
+    sessionStorage.setItem("full name", response.data.name)
+    sessionStorage.setItem("token", response.token)
+    this.loginForm.reset()
+    this.router.navigateByUrl('home');
+    location.reload()
   }
 }

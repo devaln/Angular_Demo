@@ -1,15 +1,18 @@
-<form [formGroup]="loginForm" class="col-md-6" (ngSubmit)="loginUser(loginForm.value)" >
-    <div class="container text-left p-5">
-        <div class="col-md-12">
-            <label for="email" class="col-lg-4">Email Address: </label>
-            <input type="email" formControlName="email" name="email" class="form-control col-lg-8 p-2" id="email" placeholder="E-mail Address" required>
-            <span style="color: red;" *ngIf="email && email.invalid && email.touched">This field is not valid</span>
+<div class="container p-5">
+    <form [formGroup]="loginForm" class="col-md-6" (ngSubmit)="loginUser(loginForm.value)" >
+        <div class="container text-left p-5">
+            <h2 class="text-center">Login Form</h2>
+            <div class="col-md-12">
+                <label for="email" class="col-lg-4">Email Address: </label>
+                <input type="email" formControlName="email" name="email" class="form-control col-lg-8 p-2" id="email" placeholder="E-mail Address" required>
+                <span style="color: red;" *ngIf="email && email.invalid && email.touched">This field is not valid</span>
+            </div>
+            <div class="col-md-12">
+                <label class="col-lg-4" for="pass">Password: </label>
+                <input type="password" formControlName="password" name="password" id="pass" class="form-control col-lg-8 p-2" placeholder="Password" required>
+                <span style="color: red;" *ngIf="password && password.invalid && password.touched">This field is not valid</span>
+            </div>
+            <button [disabled]="loginForm.invalid" class="btn btn-primary btn-sm mt-2 mb-4">Submit</button>
         </div>
-        <div class="col-md-12">
-            <label class="col-lg-4" for="pass">Password: </label>
-            <input type="password" formControlName="password" name="password" id="pass" class="form-control col-lg-8 p-2" placeholder="Password" required>
-            <span style="color: red;" *ngIf="password && password.invalid && password.touched">This field is not valid</span>
-        </div>
-        <button [disabled]="loginForm.invalid" class="btn btn-primary btn-sm mt-2 mb-4">Submit</button>
-    </div>
-</form>
+    </form>
+</div>
