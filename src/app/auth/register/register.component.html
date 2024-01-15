@@ -1,25 +1,35 @@
-<div class="container p-5">
-    <form [formGroup]="registerUser" (ngSubmit)="registerFrom(registerUser.value)">
-        <div class="form-container text-left p-5 col-md-12">
-            <h2 class="">Register Form: </h2>
-            <div class="form-grouped col-md-8">
-                <label for="name">Name: </label>
-                <input type="text" formControlName="name" class="form-control" name="name" id="name" placeholder="Enter Name">
-                <span style="color: red;" *ngIf="name && name.invalid && name.touched">This field is not valid</span>
+<div id="register_form" class="container p-5">
+    <div class="card col-lg-10">
+        <form [formGroup]="registerUser" (ngSubmit)="registerFrom(registerUser.value)"><br>
+            <div class="card-header">
+                <h2 class="">Register Form: </h2><br>
             </div>
-            <div class="form-grouped col-md-8">
-                <label for="email">E-mail Address: </label>
-                <input type="email" class="form-control" formControlName="email" name="email" id="email" placeholder="Email addresss">
-                <span style="color: red;" *ngIf="email && email.invalid && email.touched">This field is not valid</span>
+            <div class="card-body">
+                <div class="row col-md-12 mb-4">
+                    <label for="name" class="col-lg-4">Full Name: </label>
+                    <input type="text" formControlName="name" class="col-lg-6" name="name" id="name" placeholder="Enter Full Name">
+                    <span style="color: red;text-align: center" *ngIf="name && name.invalid && name.touched">This field is not valid</span>
+                </div>
+                <div class="row col-md-12 mb-4">
+                    <label for="email" class="col-lg-4">E-mail Address: </label>
+                    <input type="email" class="col-lg-6" formControlName="email" name="email" id="email" placeholder="Email addresss">
+                    <span style="color: red;text-align: center" *ngIf="email && email.invalid && email.touched">This field is not valid</span>
+                </div>
+
+                <div class="row col-md-12 mb-4">
+                    <label for="pass" class="col-lg-4">Password: </label>
+                    <input type="password" formControlName="password" class="col-lg-6" name="password" id="pass" placeholder="Enter Password">
+                    <span style="color: red;text-align: center" *ngIf="password && password.invalid && password.touched">This field is not valid</span>
+                </div>
+            </div><br>
+            <div class="card-footer" style="display: flex;justify-content: space-between;">
+                <div>
+                    <a href="/login">Back to Login page</a>
+                </div>
+                <div>
+                    <button [disabled]="registerUser.invalid" class="btn btn-primary btn-sm">Register</button>
+                </div>
             </div>
-            <div class="form-grouped col-md-8">
-                <label for="pass">Password: </label>
-                <input type="password" formControlName="password" class="form-control" name="password" id="pass" placeholder="Enter Password">
-                <span style="color: red;" *ngIf="password && password.invalid && password.touched">This field is not valid</span>
-            </div>
-            <div class="form-btn text-center p-4">
-                <button [disabled]="registerUser.invalid" class="btn btn-primary btn-sm">Register</button>
-            </div>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>

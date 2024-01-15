@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   constructor(
-    private router: Router
+    private router: Router,
   ) { }
 
   isLoggedIn(){
@@ -15,7 +15,11 @@ export class AuthService {
       this.router.navigateByUrl('/home')
       return true;
     } else {
-      this.router.navigateByUrl('/login')
+      if (window.location.pathname == '/register') {
+        this.router.navigateByUrl('/register')
+      }else{
+        this.router.navigateByUrl('/login')
+      }
       return false;
     }
   }

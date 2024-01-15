@@ -37,9 +37,8 @@ export class RegisterComponent {
       console.warn(response)
       if (response.status == true) {
         sessionStorage.setItem("token", response.token)
-        let token = sessionStorage.getItem("token")
-        console.warn([response, token ]);
         this.router.navigateByUrl('home');
+        location.reload()
       } else{
         console.log(response.errors)
       }

@@ -1,20 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../services/users.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   info: any;
 
   constructor(
     private data: UsersService,
     private router: Router,
+    private toastr: ToastrService,
   ) { }
+
+  ngOnInit(): void {
+    // this.toastr.success('Hello world!');
+  }
 
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -32,7 +38,7 @@ export class LoginComponent {
   loginUser(data: any) {
     this.data.login(data).subscribe((response : any) => {
       console.info("response", response)
-      response.status == true ? this.configureAuth(response) : console.error(response.errors)
+      response.status == true ? this.configureAuth(response) : this.ifAuthFailed(response)
     }, err=>{
       console.error(err)
     })
@@ -42,7 +48,14 @@ export class LoginComponent {
     sessionStorage.setItem("full name", response.data.name)
     sessionStorage.setItem("token", response.token)
     this.loginForm.reset()
+    this.toastr.success('Welcome ' + response.data.name);
     this.router.navigateByUrl('home');
-    location.reload()
+    // location.reload()
   }
+
+  ifAuthFailed(response: any){
+    // console.error(response.errors)
+    this.toastr.error(response.error.message)
+  }
+
 }

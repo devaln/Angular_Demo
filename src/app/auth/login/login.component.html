@@ -1,18 +1,30 @@
 <div class="container p-5">
-    <form [formGroup]="loginForm" class="col-md-6" (ngSubmit)="loginUser(loginForm.value)" >
-        <div class="container text-left p-5">
-            <h2 class="text-center">Login Form</h2>
-            <div class="col-md-12">
-                <label for="email" class="col-lg-4">Email Address: </label>
-                <input type="email" formControlName="email" name="email" class="form-control col-lg-8 p-2" id="email" placeholder="E-mail Address" required>
-                <span style="color: red;" *ngIf="email && email.invalid && email.touched">This field is not valid</span>
+    <div class="card col-lg-10">
+        <form [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm.value)"><br>
+            <div class="card-header">
+                <h2 class="">Login Form: </h2><br>
             </div>
-            <div class="col-md-12">
-                <label class="col-lg-4" for="pass">Password: </label>
-                <input type="password" formControlName="password" name="password" id="pass" class="form-control col-lg-8 p-2" placeholder="Password" required>
-                <span style="color: red;" *ngIf="password && password.invalid && password.touched">This field is not valid</span>
+            <div class="card-body">
+                <div class="row col-md-12 mb-4">
+                    <label for="email" class="col-lg-4">E-mail Address: </label>
+                    <input type="email" class="col-lg-6" formControlName="email" name="email" id="email" placeholder="Email addresss">
+                    <span style="color: red;text-align: center" *ngIf="email && email.invalid && email.touched">This field is not valid</span>
+                </div>
+
+                <div class="row col-md-12 mb-4">
+                    <label for="pass" class="col-lg-4">Password: </label>
+                    <input type="password" formControlName="password" class="col-lg-6" name="password" id="pass" placeholder="Enter Password">
+                    <span style="color: red;text-align: center" *ngIf="password && password.invalid && password.touched">This field is not valid</span>
+                </div>
+            </div><br>
+            <div class="card-footer" style="display: flex;justify-content: space-between;">
+                <div>
+                    <a href="/register">register here?</a>
+                </div>
+                <div>
+                    <button [disabled]="loginForm.invalid" class="btn btn-primary btn-sm">Login</button>
+                </div>
             </div>
-            <button [disabled]="loginForm.invalid" class="btn btn-primary btn-sm mt-2 mb-4">Submit</button>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>
