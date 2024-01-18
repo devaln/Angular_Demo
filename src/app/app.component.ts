@@ -9,7 +9,7 @@ import { AuthService } from './auth/services/auth.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  title = 'Authentiication';
+  title = 'DevTools';
   is_login: any
 
   constructor(

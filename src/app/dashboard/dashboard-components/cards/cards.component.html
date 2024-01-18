@@ -1,0 +1,22 @@
+<div class="row mb-3">
+    <div class="col-xl-3 col-md-6 mb-4" *ngFor="let cardAction of cardContents">
+        <div class="card h-100">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs {{ (cardAction.no_gutters == true)? 'no-gutters': '' }} font-weight-bold text-uppercase mb-1">{{ cardAction.title }}
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ '$ '+ cardAction.amt }}</div>
+                        <div class="mt-2 mb-0 text-muted text-xs">
+                            <span class="text-success mr-2"><i class="fa fa-arrow-up"></i>{{ cardAction.percent + ' %' }}</span>
+                            <span>{{ 'Since ' + cardAction.since }}</span>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="{{cardAction.icon}} fa-2x {{cardAction.icon_color}}"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

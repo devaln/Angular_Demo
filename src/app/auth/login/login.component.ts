@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
     sessionStorage.setItem("token", response.token)
     this.loginForm.reset()
     this.toastr.success('Welcome ' + response.data.name);
-    this.router.navigateByUrl('home');
+    this.router.navigateByUrl('dashboard');
     // location.reload()
   }
 

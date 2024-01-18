@@ -12,7 +12,7 @@ export class AuthService {
 
   isLoggedIn(){
     if (sessionStorage.getItem("token")) {
-      this.router.navigateByUrl('/home')
+      this.router.navigateByUrl('/dashboard')
       return true;
     } else {
       if (window.location.pathname == '/register') {

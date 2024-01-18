@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { UsersService } from '../services/users.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -12,6 +13,7 @@ export class RegisterComponent {
   constructor(
     private data: UsersService,
     private router: Router,
+    private toastr: ToastrService,
   ) { }
 
   registerUser = new FormGroup({
@@ -37,7 +39,8 @@ export class RegisterComponent {
       console.warn(response)
       if (response.status == true) {
         sessionStorage.setItem("token", response.token)
-        this.router.navigateByUrl('home');
+        this.toastr.success(response.message)
+        this.router.navigateByUrl('dashboard');
         location.reload()
       } else{
         console.log(response.errors)
