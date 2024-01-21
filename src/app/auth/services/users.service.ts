@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { catchError, tap } from 'rxjs/operators';
 import { of} from 'rxjs';
-import { ToastrService } from 'ngx-toastr';
+// import { ToastrService } from 'ngx-toastr';
 
 
 const API_URL = "http://localhost:8000/api/auth/";
@@ -12,7 +12,10 @@ const API_URL = "http://localhost:8000/api/auth/";
 })
 export class UsersService {
 
-  constructor(private https:HttpClient, private toastr: ToastrService) { }
+  constructor(
+    private https:HttpClient,
+    // private toastr: ToastrService
+  ) { }
 
   userData(){
     return this.https.get(API_URL);
@@ -31,11 +34,16 @@ export class UsersService {
         return of(err);
       })
     )
-
   }
 
-  register(data:any){
+  register(data: any){
     return this.https.post(API_URL + 'register', data)
+    .pipe(
+      catchError((err, caught) => {
+        console.error(err)
+        return of(err);
+      })
+    )
   }
 
   logout(){

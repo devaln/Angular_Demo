@@ -36,17 +36,25 @@ export class RegisterComponent {
 
   registerFrom(val: any){
     this.data.register(val).subscribe((response: any) => {
-      console.warn(response)
-      if (response.status == true) {
-        sessionStorage.setItem("token", response.token)
-        this.toastr.success(response.message)
-        this.router.navigateByUrl('dashboard');
-        location.reload()
-      } else{
-        console.log(response.errors)
-      }
+      console.info('data',response)
+      response.status == true? this.configureAuth(response) : this.ifFailed(response)
     }, err=>{
-      console.log(err)
+      console.log('123', err)
     })
+  }
+
+  configureAuth(response: any){
+    sessionStorage.setItem("id", response.data.id)
+    sessionStorage.setItem("full name", response.data.name)
+    sessionStorage.setItem("email", response.data.email)
+    sessionStorage.setItem("token", response.token)
+    this.toastr.success(response.message)
+    this.router.navigateByUrl('dashboard');
+    // location.reload()
+  }
+
+  ifFailed(response: any){
+    // console.error('error', response.error.err_msg)
+    this.toastr.error(response.error.err_msg)
   }
 }

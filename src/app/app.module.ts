@@ -14,6 +14,7 @@ import { FooterComponent } from "./layout/footer/footer.component";
 import { SidenavbarComponent } from "./layout/sidenavbar/sidenavbar.component";
 import { CardsComponent } from "./dashboard/dashboard-components/cards/cards.component";
 import { AlertsComponent } from "./components/basic/alerts/alerts.component";
+import { BreadcrumbComponent } from "./dashboard/dashboard-components/breadcrumb/breadcrumb.component";
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { AlertsComponent } from "./components/basic/alerts/alerts.component";
     CardsComponent,
     AlertsComponent,
     DashboardComponent,
+    BreadcrumbComponent,
   ],
   imports: [
     BrowserModule,

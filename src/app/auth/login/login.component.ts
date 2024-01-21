@@ -45,12 +45,14 @@ export class LoginComponent implements OnInit {
   }
 
   configureAuth(response: any){
+    sessionStorage.setItem("id", response.data.id)
     sessionStorage.setItem("full name", response.data.name)
+    sessionStorage.setItem("email", response.data.email)
     sessionStorage.setItem("token", response.token)
     this.loginForm.reset()
     this.toastr.success('Welcome ' + response.data.name);
     this.router.navigateByUrl('dashboard');
-    // location.reload()
+    location.reload()
   }
 
   ifAuthFailed(response: any){
