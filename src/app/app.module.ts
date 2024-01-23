@@ -15,6 +15,7 @@ import { SidenavbarComponent } from "./layout/sidenavbar/sidenavbar.component";
 import { CardsComponent } from "./dashboard/dashboard-components/cards/cards.component";
 import { AlertsComponent } from "./components/basic/alerts/alerts.component";
 import { BreadcrumbComponent } from "./dashboard/dashboard-components/breadcrumb/breadcrumb.component";
+import { IndexComponent } from './components/pages/users/index/index.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { BreadcrumbComponent } from "./dashboard/dashboard-components/breadcrumb
     AlertsComponent,
     DashboardComponent,
     BreadcrumbComponent,
+    IndexComponent,
   ],
   imports: [
     BrowserModule,

@@ -10,7 +10,7 @@ interface breadcrumb {
   selector: 'app-breadcrumb',
   template: `
     <ol class="breadcrumb">
-        <li class="breadcrumb-item {{ (val.is_active == true)? 'active' : '' }}" *ngFor="let val of breadcrumb">
+        <li class="breadcrumb-item {{ (val.is_active == true)? 'active' : '' }}"  *ngFor="let val of breadcrumb">
             <a href="{{ val.path }}">{{ val.value }}</a>
         </li>
         <!-- <li class="breadcrumb-item active" aria-current="page">Dashboard</li> -->
@@ -18,7 +18,7 @@ interface breadcrumb {
   `,
   styles: [
     `
-    ol li .breadcrumb-item{
+    ol li .breadcrumb-item {
         text-transform: capitialize;
     }
     `

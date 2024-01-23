@@ -25,6 +25,10 @@ export class SidenavbarComponent {
       path: 'dashboard',
       cont: 'Dashboard',
     },
+    {
+      path: 'users',
+      cont: 'Users',
+    },
   ]
 
 }

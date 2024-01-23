@@ -35,7 +35,7 @@ export class RegisterComponent {
   }
 
   registerFrom(val: any){
-    this.data.register(val).subscribe((response: any) => {
+    this.data.post('auth/register', val).subscribe((response: any) => {
       console.info('data',response)
       response.status == true? this.configureAuth(response) : this.ifFailed(response)
     }, err=>{

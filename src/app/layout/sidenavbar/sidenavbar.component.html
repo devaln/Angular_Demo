@@ -8,7 +8,7 @@
     </a>
     <hr class="sidebar-divider my-0">
     <li class="nav-item active" *ngFor="let sideMenu of sidebarMenu">
-        <a class="nav-link" href="{{sideMenu.path}}">
+        <a class="nav-link" routerLink="{{sideMenu.path}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>{{sideMenu.cont}}</span></a>
     </li>

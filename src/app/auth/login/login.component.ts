@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
   }
 
   loginUser(data: any) {
-    this.data.login(data).subscribe((response : any) => {
+    this.data.post('auth/login', data).subscribe((response : any) => {
       console.info("response", response)
       response.status == true ? this.configureAuth(response) : this.ifAuthFailed(response)
     }, err=>{
