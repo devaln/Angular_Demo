@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { IndexComponent } from './components/pages/users/index/index.component';
+import { UserFormComponent } from './components/pages/users/user-form/user-form.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'users',
     component: IndexComponent
+  },
+  {
+    path: 'user-form/:user_id',
+    component: UserFormComponent
   },
 ];
 

@@ -1,7 +1,9 @@
-<div id="wrapper">
-    <!-- Sidebar -->
-    <app-sidenavbar *ngIf="is_login"></app-sidenavbar>
-    <!-- Sidebar -->
+<div id="wrapper" style="position: relative;">
+    <div *ngIf="is_login" style="width: 267px;">
+        <!-- Sidebar -->
+        <app-sidenavbar *ngIf="is_login" style="position: fixed;"></app-sidenavbar>
+        <!-- Sidebar -->
+    </div>
     <div id="content-wrapper" class="d-flex flex-column">
         <div id="content">
             <!-- TopNav -->

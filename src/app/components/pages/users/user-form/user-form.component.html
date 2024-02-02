@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10">
+      <!-- Form Basic -->
+      <div class="card mb-4">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-primary">User Form</h6>
+          <div class="text-right"><button (click)="backBtn()" class="btn btn-dark mb-1">Back</button></div>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="userFormElement">
+            <!-- Name -->   <!-- is-invalid -->
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" class="form-control" formControlName="name" id="name" placeholder="Deval Narkhede" required>
+              <!-- <div class="invalid-feedback">
+                Please provide a valid details.
+              </div> -->
+            </div>
+            <!-- Email -->
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" class="form-control" id="email" formControlName="email" placeholder="deval@example.com" required>
+              <!-- <div class="invalid-feedback">
+                Please provide a valid details.
+              </div> -->
+            </div>
+            <!-- Password -->
+            <div class="form-group" *ngIf="form_type != 'edit'">
+              <label for="pass">Password</label>
+              <input type="password" class="form-control" formControlName="password" id="pass" placeholder="1234567890">
+              <!-- <div class="invalid-feedback">
+                Please provide a valid details.
+              </div> -->
+            </div>
+            <!-- Confirm Password -->
+            <div class="form-group" *ngIf="form_type != 'edit'">
+              <label for="pass2">Confirm Password</label>
+              <input type="password" class="form-control" formControlName="password_confirmation" id="pass2" placeholder="1234567890">
+              <!-- <div class="invalid-feedback">
+                Please provide a valid details.
+              </div> -->
+            </div>
+            <button class="btn btn-primary mb-1" [disabled]="userFormElement.invalid" type="submit" *ngIf="form_type == 'edit'" (click)="updateUser()">Update</button>
+            <button class="btn btn-primary mb-1" [disabled]="userFormElement.invalid" type="submit" *ngIf="form_type != 'edit'" (click)="createUser()">Create</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

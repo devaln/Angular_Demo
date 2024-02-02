@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { catchError, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
-// import { ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 
 
 const API_URL = "http://localhost:8000/api/";
@@ -14,23 +14,31 @@ export class UsersService {
 
   constructor(
     private https:HttpClient,
-    // private toastr: ToastrService
+    private toastr: ToastrService
   ) { }
 
   httpHeaderWithToken = new HttpHeaders({
     'Accept': 'application/json',
     'content-type': 'application/json',
-    'Authorization': `${sessionStorage.getItem('token')}`,
+    'Authorization': `Bearer ${sessionStorage.getItem('token')}`,
   })
 
   get(url: any, obj: any = null){
     return this.https.get(`${API_URL}${url}`, {headers: this.httpHeaderWithToken})
+    .pipe(
+      catchError((err, caught) => {
+        this.toastr.error(err.error.message)
+        console.error(err.error.message)
+        return of(err);
+      })
+    )
   }
 
   post(url: any, obj: any){
     return this.https.post(`${API_URL}${url}`, obj, {headers: this.httpHeaderWithToken})
     .pipe(
       catchError((err, caught) => {
+        this.toastr.error(err.error.message)
         console.error(err)
         return of(err);
       })
@@ -41,6 +49,18 @@ export class UsersService {
     return this.https.put(`${API_URL}${url}`, obj, {headers: this.httpHeaderWithToken})
     .pipe(
       catchError((err, caught) => {
+        this.toastr.error(err.error.message)
+        console.error(err)
+        return of(err);
+      })
+    )
+  }
+
+  delete(url: any){
+    return this.https.delete(`${API_URL}${url}`, {headers: this.httpHeaderWithToken})
+    .pipe(
+      catchError((err, caught) => {
+        this.toastr.error(err.error.message)
         console.error(err)
         return of(err);
       })
@@ -76,7 +96,7 @@ export class UsersService {
   //   )
   // }
 
-  logout(){
-    return this.https.get(API_URL + 'auth/logout');
-  }
+  // logout(){
+  //   return this.https.get(API_URL + 'auth/logout');
+  // }
 }

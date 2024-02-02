@@ -5,6 +5,7 @@ import { AppComponent } from 'src/app/app.component';
 interface sidebarMenu {
   path: string;
   cont: string;
+  icon: string;
 }
 
 @Component({
@@ -24,10 +25,12 @@ export class SidenavbarComponent {
     {
       path: 'dashboard',
       cont: 'Dashboard',
+      icon: 'fa-tachometer-alt',
     },
     {
       path: 'users',
       cont: 'Users',
+      icon: 'fa-users',
     },
   ]
 

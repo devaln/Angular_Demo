@@ -6,7 +6,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthModule } from './auth/auth.module';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from "@angular/common";
+import { ReactiveFormsModule } from "@angular/forms";
 
+import { UserFormComponent } from "./components/pages/users/user-form/user-form.component";
 import { AppComponent } from './app.component';
 import { HeaderComponent } from "./layout/header/header.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
@@ -29,6 +32,7 @@ import { IndexComponent } from './components/pages/users/index/index.component';
     DashboardComponent,
     BreadcrumbComponent,
     IndexComponent,
+    UserFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +41,8 @@ import { IndexComponent } from './components/pages/users/index/index.component';
     AuthModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    CommonModule,
+    ReactiveFormsModule,
     ToastrModule.forRoot({
       timeOut: 5000,
       closeButton: true,
