@@ -20,6 +20,7 @@ export class RegisterComponent {
     name: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required]),
+    password_confirmation: new FormControl('', [Validators.required]),
   })
 
   get name() {
@@ -32,6 +33,9 @@ export class RegisterComponent {
 
   get password() {
     return this.registerUser.get('password');
+  }
+  get password_confirmation() {
+    return this.registerUser.get('password_confirmation');
   }
 
   registerFrom(val: any){

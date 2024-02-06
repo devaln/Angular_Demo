@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { UsersService } from 'src/app/auth/services/users.service';
 import { FormGroup, Validators, FormBuilder, FormControl } from '@angular/forms';
 import { read } from '@popperjs/core';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-user-form',
@@ -19,6 +20,7 @@ export class UserFormComponent {
   user_id: any
   form_type: string = "new"
   user_payload: any
+  avatar_url: any
 
   constructor(
     private http: UsersService,
@@ -26,6 +28,7 @@ export class UserFormComponent {
     private router: Router,
     private toastr: ToastrService,
     private active_route: ActivatedRoute,
+    private location: Location,
   ){}
 
   ngOnInit(): void {
@@ -34,10 +37,12 @@ export class UserFormComponent {
     this.getUser(this.user_id)
   }
 
-  backBtn(){
-    sessionStorage.removeItem('UserFormId')
-    this.router.navigateByUrl('/users')
-  }
+  backBtn() { this.location.back() } 
+
+  // backBtn(){
+  //   sessionStorage.removeItem('UserFormId')
+  //   this.router.navigateByUrl('/users')
+  // }
 
   userForm(){
     this.userFormElement =  this._fb.group({
@@ -45,6 +50,9 @@ export class UserFormComponent {
       email: ['', [Validators.email, Validators.required]],
       password: [''],
       password_confirmation: [''],
+      dob: [''],
+      is_admin: [''],
+      avatar: [''],
     });
     // if (this.form_type =/) {
 
@@ -57,7 +65,9 @@ export class UserFormComponent {
         this.form_type = "edit"
         this.userFormElement.patchValue({
           name: response.data.name,
-          email: response.data.email
+          email: response.data.email,
+          dob: response.data.dob,
+          is_admin: response.data.is_admin,
         })
       }, err => {
         console.error(err)
@@ -71,6 +81,9 @@ export class UserFormComponent {
       'email': this.userFormElement.value.email,
       'password': this.userFormElement.value.password,
       'password_confirmation': this.userFormElement.value.password_confirmation,
+      'dob': this.userFormElement.value.dob,
+      'is_admin': this.userFormElement.value.is_admin,
+      'avatar': this.avatar_url
     }
   }
 
@@ -111,4 +124,10 @@ export class UserFormComponent {
     this.toastr.error('something went wrong')
     console.error(response)
   }
+
+  setUser(event: any){
+    this.avatar_url = event.target.files[0];
+    // this.userFormElement.get('avatar').setValue(this.avatar_url, this.avatar_url.name)
+  }
 }
+ 

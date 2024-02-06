@@ -7,7 +7,7 @@
         <div class="sidebar-brand-text mx-3">{{Title}}</div>
     </a>
     <hr class="sidebar-divider my-0">
-    <li class="nav-item active" *ngFor="let sideMenu of sidebarMenu">
+    <li class="nav-item" *ngFor="let sideMenu of sidebarMenu">
         <a class="nav-link" routerLink="{{sideMenu.path}}">
             <i class="fas fa-fw {{sideMenu.icon}}"></i>
             <span>{{sideMenu.cont}}</span></a>
