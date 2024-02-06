@@ -19,6 +19,10 @@ import { CardsComponent } from "./dashboard/dashboard-components/cards/cards.com
 import { AlertsComponent } from "./components/basic/alerts/alerts.component";
 import { BreadcrumbComponent } from "./dashboard/dashboard-components/breadcrumb/breadcrumb.component";
 import { IndexComponent } from './components/pages/users/index/index.component';
+import { SpinnerComponent } from "./spinner/spinner.component";
+
+import { HTTP_INTERCEPTORS } from "@angular/common/http";
+import { LoaderInterceptor } from "./interceptors/loader.interceptor";
 
 @NgModule({
   declarations: [
@@ -33,6 +37,7 @@ import { IndexComponent } from './components/pages/users/index/index.component';
     BreadcrumbComponent,
     IndexComponent,
     UserFormComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +55,13 @@ import { IndexComponent } from './components/pages/users/index/index.component';
       progressBar: true
     }),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
