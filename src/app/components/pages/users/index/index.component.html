@@ -1,11 +1,13 @@
 <div class="container-fluid">
-  <button type="button" class="btn btn-secondary mb-1" (click)="editUser('')">Create User</button>
+  <button type="button" class="btn btn-primary mb-1" (click)="editUser('')">Create User</button>
   <table class="table align-items-center table-flush" id="dataTable">
     <thead class="thead-light">
       <tr>
         <th>#Id</th>
+        <th>Avatar</th>
         <th>Name</th>
         <th>Email Address</th>
+        <th>Date Of Birth</th>
         <th>Created At</th>
         <th colspan="2">Action</th>
       </tr>
@@ -13,8 +15,10 @@
     <tfoot>
       <tr>
         <th>#Id</th>
+        <th>Avatar</th>
         <th>Name</th>
         <th>Email Address</th>
+        <th>Date Of Birth</th>
         <th>Created At</th>
         <th colspan="2">Action</th>
       </tr>
@@ -22,11 +26,13 @@
     <tbody>
       <tr *ngFor="let val of data">
         <td>{{val.id}}</td>
+        <td>{{val.avatar ?? '--'}}</td>
         <td>{{val.name}}</td>
         <td>{{val.email}}</td>
+        <td>{{val.dob ?? '--'}}</td>
         <td>{{val.created_at.split('T')[0]}}</td>
-        <td><a (click)="editUser(val.id)"  class="btn btn-info">Edit</a></td>
-        <td><a href="" class="btn btn-danger">Delete</a></td>
+        <td><a (click)="editUser(val.id)" class="btn btn-info">Edit</a></td>
+        <td><a (click)="deleteUser(val.id)" class="btn btn-danger">Delete</a></td>
     </tbody>
   </table>
 </div>

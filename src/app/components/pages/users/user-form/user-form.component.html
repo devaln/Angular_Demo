@@ -9,7 +9,7 @@
         </div>
         <div class="card-body">
           <form [formGroup]="userFormElement">
-            <!-- Name -->   <!-- is-invalid -->
+            <!-- Name -->
             <div class="form-group">
               <label for="name">Full Name</label>
               <input type="text" class="form-control" formControlName="name" id="name" placeholder="Deval Narkhede" required>
@@ -37,6 +37,30 @@
             <div class="form-group" *ngIf="form_type != 'edit'">
               <label for="pass2">Confirm Password</label>
               <input type="password" class="form-control" formControlName="password_confirmation" id="pass2" placeholder="1234567890">
+              <!-- <div class="invalid-feedback">
+                Please provide a valid details.
+              </div> -->
+            </div>
+            <!-- avatar -->
+            <div class="form-group">
+              <label for="avatar">Avatar</label>
+              <input type="file" (change)="setUser($event)" class="form-control" formControlName="avatar" id="avatar">
+              <!-- <div class="invalid-feedback">
+                Please provide a valid details.
+              </div> -->
+            </div>
+            <!-- dob -->
+            <div class="form-group">
+              <label for="dob">Birth Date</label>
+              <input type="date" class="form-control" formControlName="dob" id="dob">
+              <!-- <div class="invalid-feedback">
+                Please provide a valid details.
+              </div> -->
+            </div>
+            <!-- is_admin -->
+            <div class="form-group">
+              <input type="checkbox" formControlName="is_admin" id="is_admin">
+              <label for="is_admin"> Is this user role is 'Admin'</label>
               <!-- <div class="invalid-feedback">
                 Please provide a valid details.
               </div> -->
