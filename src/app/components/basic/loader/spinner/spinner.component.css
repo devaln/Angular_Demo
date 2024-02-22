@@ -21,7 +21,7 @@
   height: 20px;
   margin: 10px;
   list-style-type: none;
-  transition: 0.5s all ease;
+  transition: 0.5s all ease-in-out;
 }
 
 .item:nth-child(1) {

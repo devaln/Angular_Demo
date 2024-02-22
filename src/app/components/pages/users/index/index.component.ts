@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from 'src/app/auth/services/users.service';
+import { UsersService } from '../../auth/services/users.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { HttpClient } from '@angular/common/http';
@@ -11,7 +11,13 @@ import { HttpClient } from '@angular/common/http';
 })
 
 export class IndexComponent {
-  data: any
+  // public data2 = [...Array(180).keys()].map(x => `item ${++x}`)
+  public data: any
+  public current: number = 1;
+  public perPage = 5
+  public itemsToDisplay: any
+  public total: any
+
 
   constructor(
     private http: UsersService,
@@ -27,11 +33,13 @@ export class IndexComponent {
     this.http.get("users").subscribe((response: any)=> {
       console.log(response)
       this.data = response.data
+      this.total = Math.ceil(this.data.length / this.perPage)
+      this.itemsToDisplay = this.paginate(this.current, this.perPage)
     })
   }
 
   editUser(user_id: any){
-    // userId? sessionStorage.setItem('UserFormId', userId) : sessionStorage.removeItem('UserFormId')
+    // user_id? sessionStorage.setItem('UserFormId', user_id) : sessionStorage.removeItem('UserFormId')
     this.router.navigateByUrl(`/user-form/${user_id}`)
   }
 
@@ -51,5 +59,25 @@ export class IndexComponent {
   responseFalse(response: any){
     this.toastr.error('something went wrong')
     console.error(response)
+  }
+
+  public onGoTo(page: number): void {
+    this.current = page
+    this.itemsToDisplay = this.paginate(this.current, this.perPage)
+  }
+
+  public onNext(page: number): void {
+    this.current = page + 1
+    this.itemsToDisplay = this.paginate(this.current, this.perPage)
+  }
+
+  public onPrevious(page: number): void {
+    this.current = page - 1
+    this.itemsToDisplay = this.paginate(this.current, this.perPage)
+  }
+
+  public paginate(current: number, perPage: number): string[] {
+    // debugger
+    return [...this.data.slice((current - 1) * perPage).slice(0, perPage)]
   }
 }

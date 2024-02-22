@@ -8,6 +8,8 @@
         <th>Name</th>
         <th>Email Address</th>
         <th>Date Of Birth</th>
+        <th>Gender</th>
+        <th>Maritial Status</th>
         <th>Created At</th>
         <th colspan="2">Action</th>
       </tr>
@@ -19,20 +21,25 @@
         <th>Name</th>
         <th>Email Address</th>
         <th>Date Of Birth</th>
+        <th>Gender</th>
+        <th>Maritial Status</th>
         <th>Created At</th>
         <th colspan="2">Action</th>
       </tr>
     </tfoot>
     <tbody>
-      <tr *ngFor="let val of data">
+      <tr *ngFor="let val of itemsToDisplay">
         <td>{{val.id}}</td>
         <td>{{val.avatar ?? '--'}}</td>
         <td>{{val.name}}</td>
         <td>{{val.email}}</td>
         <td>{{val.dob ?? '--'}}</td>
+        <td>{{val.gender ?? '--'}}</td>
+        <td>{{val.maritial_status ?? '--'}}</td>
         <td>{{val.created_at.split('T')[0]}}</td>
         <td><a (click)="editUser(val.id)" class="btn btn-info">Edit</a></td>
         <td><a (click)="deleteUser(val.id)" class="btn btn-danger">Delete</a></td>
     </tbody>
   </table>
+  <app-pagination [current]="current" [total]="total" (goTo)="onGoTo($event)" (next)="onNext($event)" (previous)="onPrevious($event)"></app-pagination>
 </div>
