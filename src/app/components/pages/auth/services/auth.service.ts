@@ -17,7 +17,14 @@ export class AuthService {
     } else {
       if (window.location.pathname == '/register') {
         this.router.navigateByUrl('/register')
-      }else{
+      }
+      else if (window.location.pathname == '/societies') {
+        this.router.navigateByUrl('/societies')
+      }
+      else if (window.location.pathname == '/societies-forms') {
+        this.router.navigateByUrl('/societies-forms')
+      }
+      else {
         this.router.navigateByUrl('/login')
       }
       return false;

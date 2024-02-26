@@ -46,6 +46,7 @@ export class IndexComponent {
   deleteUser(user_id: any){
     this.http.delete(`users/${user_id}`).subscribe((response) => {
       (response.status === true)? this.responseTrue('Deleted') : this.responseFalse(response)
+      location.reload()
     }, err => {
       console.error(err.error)
     })

@@ -11,6 +11,19 @@
                                 </div>
                                 <form class="user" [formGroup]="registerUser"
                                     (ngSubmit)="registerFrom(registerUser.value)">
+
+                                    <!-- Society -->
+                                    <div class="form-group">
+                                        <label for="maritial_status">Select Society: </label>
+                                        <select id="maritial_status" formControlName="society_id" class="form-control form-control mb-3">
+                                            <option *ngFor="let val of societies" [ngValue]="val.id">{{val.name}}</option>
+                                        </select>
+                                        <span style="color: red;text-align: center" class="text-xs"
+                                            *ngIf="society_id && society_id.invalid && society_id.touched">This field is not valid</span>
+                                    </div>
+
+                                    <!-- <input type="hidden" formControlName="" [(ngModel)]="societies" name="society_id" > -->
+
                                     <div class="form-group">
                                         <label>First Name</label>
                                         <input type="text" class="form-control" formControlName="name"
@@ -18,10 +31,7 @@
                                         <span style="color: red;text-align: center" class="text-xs"
                                             *ngIf="name && name.invalid && name.touched">This field is not valid</span>
                                     </div>
-                                    <!-- <div class="form-group">
-                                        <label>Last Name</label>
-                                        <input type="text" class="form-control" id="exampleInputLastName" placeholder="Enter Last Name">
-                                    </div> -->
+
                                     <div class="form-group">
                                         <label>Email</label>
                                         <input type="email" formControlName="email" class="form-control"
@@ -47,11 +57,7 @@
                                             *ngIf="password && password.invalid && password.touched">This field is not valid</span>
 
                                     </div>
-                                    <!-- <div class="form-group">
-                                        <label>Repeat Password</label>
-                                        <input type="password" class="form-control" id="exampleInputPasswordRepeat"
-                                            placeholder="Repeat Password">
-                                    </div> -->
+
                                     <div class="form-group">
                                         <button [disabled]="registerUser.invalid" type="submit"
                                             class="btn btn-primary btn-block">Register</button>

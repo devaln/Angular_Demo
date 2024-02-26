@@ -21,6 +21,7 @@ export class UserFormComponent {
   form_type: string = "new"
   user_payload: any
   avatar_url: any
+  society_id = sessionStorage.getItem('society_id')
 
   constructor(
     private http: UsersService,

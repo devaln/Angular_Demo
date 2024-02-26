@@ -7,14 +7,12 @@ import { ReactiveFormsModule } from "@angular/forms";
 
 import { IndexComponent } from './users/index/index.component';
 import { UserFormComponent } from './users/user-form/user-form.component';
-import { SocietyIndexComponent } from './society/society-index/society-index.component';
 import { SocietyFormComponent } from './society/society-form/society-form.component';
 
 @NgModule({
   declarations: [
     IndexComponent,
     UserFormComponent,
-    SocietyIndexComponent,
     SocietyFormComponent,
   ],
   imports: [

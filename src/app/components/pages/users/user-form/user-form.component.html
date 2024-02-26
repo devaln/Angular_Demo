@@ -9,6 +9,8 @@
         </div>
         <div class="card-body">
           <form [formGroup]="userFormElement">
+
+            <input type="hidden" formControlName="society_id" name="society_id" [(ngModel)]="society_id">
             <!-- Name -->
             <div class="form-group">
               <label for="name">Full Name</label>

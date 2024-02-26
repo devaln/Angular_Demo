@@ -6,6 +6,8 @@ import { LoginComponent } from './components/pages/auth/login/login.component';
 import { RegisterComponent } from './components/pages/auth/register/register.component';
 import { IndexComponent } from './components/pages/users/index/index.component';
 import { UserFormComponent } from './components/pages/users/user-form/user-form.component';
+// import { SocietyIndexComponent } from './components/pages/society/society-index/society-index.component';
+import { SocietyFormComponent } from './components/pages/society/society-form/society-form.component';
 
 const routes: Routes = [
   {
@@ -19,6 +21,14 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
+  },
+  // {
+  //   path: 'societies',
+  //   component: SocietyIndexComponent
+  // },
+  {
+    path: 'societies-forms',
+    component: SocietyFormComponent
   },
   {
     path: 'users',
