@@ -32,6 +32,11 @@ export class SidenavbarComponent {
       cont: 'Users',
       icon: 'fa-users',
     },
+    {
+      path: 'wings',
+      cont: 'Wings',
+      icon: 'fa-users',
+    },
   ]
 
 }

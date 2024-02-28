@@ -7,8 +7,20 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
 })
+
 export class DashboardComponent {
-  constructor(private toastr: ToastrService, private router: Router) {}
+togglePagesMenu: any;
+closeSideMenu: any;
+toggleSideMenu: any;
+toggleTheme: any;
+toggleNotificationsMenu: any;
+closeNotificationsMenu: any;
+toggleProfileMenu: any;
+closeProfileMenu: any;
+  constructor(
+    private toastr: ToastrService,
+    private router: Router,
+  ) {}
 
   userName = sessionStorage.getItem('full name');
   isLogin = sessionStorage.getItem('token') ? true : false;
