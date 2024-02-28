@@ -9,6 +9,7 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
+
 export class LoginComponent implements OnInit {
   info: any;
 
@@ -38,13 +39,13 @@ export class LoginComponent implements OnInit {
   loginUser(data: any) {
     this.data.post('auth/login', data).subscribe((response : any) => {
       console.info("response", response)
-      response.status == true ? this.configureAuth(response) : this.ifAuthFailed(response)
+      response.status == true ? this.responseTrue(response) : this.responseFalse(response)
     }, err=>{
       console.error(err)
     })
   }
 
-  configureAuth(response: any){
+  responseTrue(response: any){
     sessionStorage.setItem("id", response.data.id)
     sessionStorage.setItem("full name", response.data.name)
     sessionStorage.setItem("email", response.data.email)
@@ -55,8 +56,7 @@ export class LoginComponent implements OnInit {
     location.reload()
   }
 
-  ifAuthFailed(response: any){
-    // console.error(response.errors)
+  responseFalse(response: any){
     this.toastr.error(response.error.message)
   }
 
