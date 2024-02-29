@@ -19,17 +19,4 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.is_login = this.auth.isLoggedIn()
   }
-
-  logoutUser() {
-    if (this.is_login == true) {
-      // if(confirm('are you sure you want to logout this user')){
-      sessionStorage.clear();
-      // this.toastr.success('Logout Successfully');
-      // this.router.navigateByUrl('/login');
-      location.reload();
-      // }
-    } else {
-      console.error('Unauthorized user');
-    }
-  }
 }

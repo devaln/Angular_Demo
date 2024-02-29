@@ -20,8 +20,8 @@ export class UserFormComponent {
   user_id: any
   form_type: string = "new"
   user_payload: any
-  avatar_url: any
-  society_id = sessionStorage.getItem('society_id')
+  file: any
+  // society_id = sessionStorage.getItem('society_id')
 
   constructor(
     private http: UsersService,
@@ -74,6 +74,11 @@ export class UserFormComponent {
     }
   }
 
+  uploadImage(event: any){
+    this.file = event.target.files[0];
+    // this.userFormElement.get('avatar').setValue(this.file, this.file.name)
+  }
+
   makeUserPayload(){
     this.user_payload = {
       'name': this.userFormElement.value.name,
@@ -82,10 +87,10 @@ export class UserFormComponent {
       'password_confirmation': this.userFormElement.value.password_confirmation,
       'dob': this.userFormElement.value.dob,
       'is_admin': this.userFormElement.value.is_admin,
-      'avatar': this.userFormElement.value.avatar,
       'mobile': this.userFormElement.value.mobile,
       'gender': this.userFormElement.value.gender,
       'maritial_status': this.userFormElement.value.maritial_status,
+      // 'avatar': this.userFormElement.value.avatar,
     }
   }
 
@@ -124,10 +129,5 @@ export class UserFormComponent {
       this.toastr.error(response.error)
       console.error(response.error)
     }
-  }
-
-  setUser(event: any){
-    this.avatar_url = event.target.files[0];
-    // this.userFormElement.get('avatar').setValue(this.avatar_url, this.avatar_url.name)
   }
 }

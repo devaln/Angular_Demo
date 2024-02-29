@@ -11,7 +11,7 @@
         <div class="card-body">
           <form [formGroup]="userFormElement">
 
-            <input type="hidden" formControlName="society_id" name="society_id" [(ngModel)]="society_id">
+            <!-- <input type="hidden" formControlName="society_id" name="society_id" [(ngModel)]="society_id"> -->
             <!-- Name -->
             <div class="form-group">
               <label for="name">Full Name</label>
@@ -45,13 +45,13 @@
               </div> -->
             </div>
             <!-- avatar -->
-            <div class="form-group">
+            <!-- <div class="form-group">
               <label for="avatar">Avatar</label>
-              <input type="file" (change)="setUser($event)" class="form-control" formControlName="avatar" id="avatar">
-              <!-- <div class="invalid-feedback">
+              <input type="file" (change)="uploadImage($event)" class="form-control" formControlName="avatar" id="avatar">
+              <div class="invalid-feedback">
                 Please provide a valid details.
-              </div> -->
-            </div>
+              </div>
+            </div> -->
             <!-- dob -->
             <div class="form-group">
               <label for="dob">Birth Date</label>
