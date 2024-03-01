@@ -23,6 +23,10 @@ export class RegisterComponent implements OnInit {
       this.getSocieties();
   }
 
+  societyForm(society_id: any){
+    this.router.navigateByUrl(`societies-forms/`)
+  }
+
   registerUser = new FormGroup({
     name: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -79,7 +83,7 @@ export class RegisterComponent implements OnInit {
   getSocieties() {
     this.http.get(`societies`).subscribe((response: any) => {
       this.societies = response.data
-      console.log(this.societies[0].name)
+      // console.log(this.societies[0].name)
     })
   }
 }

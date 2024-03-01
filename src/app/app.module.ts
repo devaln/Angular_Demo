@@ -8,8 +8,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from "@angular/common";
 import { ReactiveFormsModule } from "@angular/forms";
 import { PagesModule } from "./components/pages/pages.module";
-// import { AuthModule } from "./components/pages/auth/auth.module";
-// import { PaginationModule } from "./components/basic/pagination/pagination.module";
 
 import { AppComponent } from "./app.component";
 import { HeaderComponent } from "./layout/header/header.component";
@@ -20,9 +18,6 @@ import { CardsComponent } from "./layout/dashboard/dashboard-components/cards/ca
 import { AlertsComponent } from "./components/basic/alerts/alerts.component";
 import { BreadcrumbComponent } from "./layout/dashboard/dashboard-components/breadcrumb/breadcrumb.component";
 import { SpinnerComponent } from "./components/basic/loader/spinner/spinner.component";
-// import { PaginationComponent } from "./pagination/pagination/pagination.component";
-// import { IndexComponent } from "./components/pages/users/index/index.component";
-// import { UserFormComponent } from "./components/pages/users/user-form/user-form.component";
 
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { LoaderInterceptor } from "./components/basic/loader/interceptors/loader.interceptor";
@@ -39,20 +34,15 @@ import { LoaderInterceptor } from "./components/basic/loader/interceptors/loader
     DashboardComponent,
     BreadcrumbComponent,
     SpinnerComponent,
-    // PaginationComponent,
-    // IndexComponent,
-    // UserFormComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    // AuthModule,
     HttpClientModule,
     BrowserAnimationsModule,
     CommonModule,
     ReactiveFormsModule,
-    // PaginationModule,
     PagesModule,
     ToastrModule.forRoot({
       timeOut: 5000,

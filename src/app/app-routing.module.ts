@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent },
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'societies-forms', component: SocietyFormComponent },
+  { path: 'societies-forms/:society_id', component: SocietyFormComponent },
   { path: 'users', component: IndexComponent },
   { path: 'user-form/:user_id', component: UserFormComponent },
   { path: 'wings', component: WingIndexComponent },

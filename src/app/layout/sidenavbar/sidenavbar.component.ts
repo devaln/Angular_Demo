@@ -3,6 +3,7 @@ import { ToastrService } from 'ngx-toastr';
 import { AppComponent } from 'src/app/app.component';
 import { UsersService } from 'src/app/components/pages/auth/services/users.service';
 import Swal from 'sweetalert2';
+import { catchError, retry } from 'rxjs/operators';
 // import { Title } from '@angular/platform-browser';
 
 interface sidebarMenu {
@@ -31,6 +32,11 @@ export class SidenavbarComponent {
       path: 'dashboard',
       cont: 'Dashboard',
       icon: 'fa-tachometer-alt',
+    },
+    {
+      path: 'societies-forms/1',
+      cont: 'Society',
+      icon: 'fa-users',
     },
     {
       path: 'users',

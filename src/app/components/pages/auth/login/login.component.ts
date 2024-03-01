@@ -50,6 +50,7 @@ export class LoginComponent implements OnInit {
     sessionStorage.setItem("full name", response.data.name)
     sessionStorage.setItem("email", response.data.email)
     sessionStorage.setItem("token", response.token)
+    sessionStorage.setItem("society_id", response.data.society_id)
     this.loginForm.reset()
     this.toastr.success('Welcome ' + response.data.name);
     this.router.navigateByUrl('dashboard');

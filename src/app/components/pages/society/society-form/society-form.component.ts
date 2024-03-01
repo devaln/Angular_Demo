@@ -14,7 +14,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class SocietyFormComponent {
   society_form_element !: FormGroup
-  society_id: any
+  society_id = sessionStorage.getItem('society_id')
   form_type: string = 'new'
   society_payload: any
 
@@ -28,53 +28,55 @@ export class SocietyFormComponent {
   ) {}
 
   ngOnInit(): void {
-    this.society_id = this.active_route.snapshot.paramMap.get('society_id')
+    // this.society_id = this.active_route.snapshot.paramMap.get('society_id')
     this.societyForm()
     this.getSocieties(this.society_id)
   }
 
-  backBtn() { this.location.back() } 
+  backBtn() { this.location.back() }
 
   societyForm(){
     this.society_form_element = this.fb.group({
       name: ['', [Validators.required]],
       email: ['', [Validators.email, Validators.required]],
-      phone: ['', [Validators.required, Validators.max(10)]],
-      logo: [''],
+      phone: ['', [Validators.required, Validators.maxLength(10)]],
+      builder_name: ['', [Validators.required]],
+      builder_email: ['', [Validators.required, Validators.email]],
+      builder_phone: ['', [Validators.required, Validators.maxLength(10)]],
+      // logo: [''],
       country: [''],
       state: [''],
       city: [''],
       location: [''],
       pincode: [''],
-      builder_name: ['', [Validators.required]],
-      builder_email: ['', [Validators.required, Validators.email]],
-      builder_phone: ['', [Validators.required, Validators.max(10)]],
       is_active: [''],
     })
   }
 
   getSocieties(society_id: any) {
-    this.http.get(`societies/${society_id}`).subscribe((response) => {
-      console.log(response.data)
-      this.form_type = 'edit'
-      this.society_form_element.patchValue({
-        name: response.data.name,
-        email: response.data.email,
-        phone: response.data.phone,
-        logo: response.data.logo,
-        country: response.data.country,
-        state: response.data.state,
-        city: response.data.city,
-        location: response.data.location,
-        pincode: response.data.pincode,
-        builder_name: response.data.builder_name,
-        builder_email: response.data.builder_email,
-        builder_phone: response.data.builder_phone,
-        is_active: response.data.is_active
+    if (society_id) {
+      this.http.get(`society/${society_id}`).subscribe((response) => {
+        console.log(response.data)
+        this.form_type = 'edit'
+        this.society_form_element.patchValue({
+          name: response.data.name,
+          email: response.data.email,
+          phone: response.data.phone,
+          country: response.data.country,
+          state: response.data.state,
+          city: response.data.city,
+          location: response.data.location,
+          pincode: response.data.pincode,
+          builder_name: response.data.builder_name,
+          builder_email: response.data.builder_email,
+          builder_phone: response.data.builder_phone,
+          // logo: response.data.logo,
+          is_active: response.data.is_active
+        })
+      }, err => {
+        console.error(err.error.message)
       })
-    }, err => {
-      console.error(err.error.message)
-    })
+    }
   }
 
   societyPayload() {
@@ -97,18 +99,18 @@ export class SocietyFormComponent {
 
   updateSociety(){
     this.societyPayload()
-    this.http.put(`societies/${this.society_id}/edit`, this.society_payload).subscribe((response: any) => {
+    this.http.put(`society/${this.society_id}/edit`, this.society_payload).subscribe((response: any) => {
       this.form_type = "new"
-      this.responseStatus(response, "Updated", 'societies-forms')
+      this.responseStatus(response, "Updated", `societies-forms/${this.society_id}`)
     }, err => {
       this.toastr.error(err.error.message)
       console.error(err.error.message)
     })
   }
 
-  createWing(){
+  createSociety(){
     this.societyPayload()
-    this.http.post(`societies/create`, this.society_payload).subscribe((response: any) => {
+    this.http.post(`society/create`, this.society_payload).subscribe((response: any) => {
       this.responseStatus(response, "Created", 'register')
     }, err => {
       console.error(err.error)
