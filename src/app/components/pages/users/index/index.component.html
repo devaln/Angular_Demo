@@ -35,7 +35,8 @@
         <tbody>
           <tr *ngFor="let val of itemsToDisplay">
             <td>{{val.id}}</td>
-            <td>{{val.avatar ?? '--'}}</td>
+            <td *ngIf="val.avatar"><img src="{{base_url+val.avatar}}" alt="img"></td>
+            <td *ngIf="!val.avatar">--</td>
             <td>{{val.name}}</td>
             <td>{{val.email}}</td>
             <td>{{val.dob ?? '--'}}</td>

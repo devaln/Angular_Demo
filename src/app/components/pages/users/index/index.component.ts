@@ -3,6 +3,8 @@ import { UsersService } from '../../auth/services/users.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { HttpClient } from '@angular/common/http';
+import { BASE_URL } from 'src/app/config-app';
+
 
 @Component({
   selector: 'app-index',
@@ -17,6 +19,7 @@ export class IndexComponent {
   public perPage = 5
   public itemsToDisplay: any
   public total: any
+  base_url = BASE_URL
 
 
   constructor(

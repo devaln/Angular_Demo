@@ -3,10 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { catchError, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
-
-
-const API_URL = "http://localhost:8000/api/";
-// const API_URL = "http://10.210.9.61:3000/api/";
+import { API_URL, AUTH_TOKEN } from 'src/app/config-app';
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +16,9 @@ export class UsersService {
   ) { }
 
   httpHeaderWithToken = new HttpHeaders({
-    'Accept': 'application/json',
-    'content-type': 'application/json',
+    // 'Accept': 'application/json',
+    // 'Content-Type': 'multipart/form-data; boundary {}',
+    // 'enctype': 'multipart/form-data',
     'Authorization': `Bearer ${sessionStorage.getItem('token')}`,
   })
 
@@ -48,6 +46,17 @@ export class UsersService {
 
   put(url: any, obj: any){
     return this.https.put(`${API_URL}${url}`, obj, {headers: this.httpHeaderWithToken})
+    .pipe(
+      catchError((err, caught) => {
+        this.toastr.error(err.error.message)
+        console.error(err)
+        return of(err);
+      })
+    )
+  }
+
+  patch(url: any, obj: any){
+    return this.https.patch(`${API_URL}${url}`, obj, {headers: this.httpHeaderWithToken})
     .pipe(
       catchError((err, caught) => {
         this.toastr.error(err.error.message)

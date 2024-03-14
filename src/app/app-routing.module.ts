@@ -11,7 +11,7 @@ import { WingIndexComponent } from './components/pages/wings/wing-index/wing-ind
 import { WingFormComponent } from './components/pages/wings/wing-form/wing-form.component';
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent},
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent },
   { path: 'dashboard', component: DashboardComponent },

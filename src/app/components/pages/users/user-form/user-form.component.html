@@ -10,23 +10,25 @@
         </div>
         <div class="card-body">
           <form [formGroup]="userFormElement">
-
-            <!-- <input type="hidden" formControlName="society_id" name="society_id" [(ngModel)]="society_id"> -->
             <!-- Name -->
             <div class="form-group">
               <label for="name">Full Name</label>
-              <input type="text" class="form-control" formControlName="name" id="name" placeholder="Deval Narkhede" required>
-              <!-- <div class="invalid-feedback">
+              <input type="text" class="form-control" formControlName="name" id="name" placeholder="Deval Narkhede"
+                required>
+              <!-- <span class="text-xs" style="color: red;text-align: center"
+                *ngIf="userFormElement.controls['name'].invalid && userFormElement.controls['name'].touched">
                 Please provide a valid details.
-              </div> -->
+              </span> -->
             </div>
             <!-- Email -->
             <div class="form-group">
               <label for="email">Email Address</label>
-              <input type="email" class="form-control" id="email" formControlName="email" placeholder="deval@example.com" required>
-              <!-- <div class="invalid-feedback">
+              <input type="email" class="form-control" id="email" formControlName="email"
+                placeholder="deval@example.com" required>
+              <!-- <span class="text-xs" style="color: red;text-align: center"
+                *ngIf="userFormElement.controls['email'].invalid && userFormElement.controls['email'].touched">
                 Please provide a valid details.
-              </div> -->
+              </span> -->
             </div>
             <!-- Password -->
             <div class="form-group" *ngIf="form_type != 'edit'">
@@ -39,19 +41,22 @@
             <!-- Confirm Password -->
             <div class="form-group" *ngIf="form_type != 'edit'">
               <label for="pass2">Confirm Password</label>
-              <input type="password" class="form-control" formControlName="password_confirmation" id="pass2" placeholder="1234567890">
+              <input type="password" class="form-control" formControlName="password_confirmation" id="pass2"
+                placeholder="1234567890">
               <!-- <div class="invalid-feedback">
                 Please provide a valid details.
               </div> -->
             </div>
             <!-- avatar -->
-            <!-- <div class="form-group">
+            <div class="form-group">
               <label for="avatar">Avatar</label>
-              <input type="file" (change)="uploadImage($event)" class="form-control" formControlName="avatar" id="avatar">
+              <input id="avatar" type="file" (change)="uploadImage($event)" class="form-control"
+                formControlName="avatar">
+              <img *ngIf="img_url && img_url != ''" src="{{img_url}}" alt="img" class="p-2">
               <div class="invalid-feedback">
                 Please provide a valid details.
               </div>
-            </div> -->
+            </div>
             <!-- dob -->
             <div class="form-group">
               <label for="dob">Birth Date</label>
@@ -71,7 +76,7 @@
             <!-- gender -->
             <div class="form-group">
               <label for="gender">Gender</label>
-              <select id="gender" formControlName="gender" class="form-control form-control mb-3">
+              <select id="gender" formControlName="gender" class="form-control mb-3">
                 <option value="male">Male</option>
                 <option value="female">Female</option>
                 <option value="other">Other</option>
@@ -83,7 +88,7 @@
             <!-- maritial status -->
             <div class="form-group">
               <label for="maritial_status">Maritial Status</label>
-              <select id="maritial_status" formControlName="maritial_status" class="form-control form-control mb-3">
+              <select id="maritial_status" formControlName="maritial_status" class="form-control mb-3">
                 <option value="married">Married</option>
                 <option value="unmarried">Unmarried</option>
                 <option value="divorce">Divorce</option>
@@ -100,8 +105,10 @@
                 Please provide a valid details.
               </div> -->
             </div>
-            <button class="btn btn-primary mb-1" [disabled]="userFormElement.invalid" type="submit" *ngIf="form_type == 'edit'" (click)="updateUser()">Update</button>
-            <button class="btn btn-primary mb-1" [disabled]="userFormElement.invalid" type="submit" *ngIf="form_type != 'edit'" (click)="createUser()">Create</button>
+            <button class="btn btn-primary mb-1" [disabled]="userFormElement.invalid" type="submit"
+              *ngIf="form_type == 'edit'" (click)="updateUser()">Update</button>
+            <button class="btn btn-primary mb-1" [disabled]="userFormElement.invalid" type="submit"
+              *ngIf="form_type != 'edit'" (click)="createUser()">Create</button>
           </form>
         </div>
       </div>
