@@ -20,7 +20,7 @@ export class UserFormComponent {
   userFormElement: FormGroup
   user_id = this.active_route.snapshot.paramMap.get('user_id')
   form_type: string = "new"
-  user_payload = new FormData();
+  user_payload: any
   file: any
   img_url: any
 
@@ -74,7 +74,7 @@ export class UserFormComponent {
 
   uploadImage(event: any){
     if (event.target.files[0]) {
-      this.file = event.target.files[0] as File;
+      this.file = event.target.files[0];
       const reader = new FileReader();
       reader.readAsDataURL(this.file);
       reader.onload = (event: any) => {
@@ -85,21 +85,36 @@ export class UserFormComponent {
   }
 
   makeUserPayload(){
-    this.user_payload.set('name', this.userFormElement.controls['name'].value);
-    this.user_payload.set('email', this.userFormElement.controls['email'].value);
-    this.user_payload.set('password', this.userFormElement.value.password);
-    this.user_payload.set('password_confirmation', this.userFormElement.value.password_confirmation);
-    this.user_payload.set('dob', this.userFormElement.value.dob);
-    this.user_payload.set('is_admin', this.userFormElement.value.is_admin);
-    this.user_payload.set('mobile', this.userFormElement.value.mobile);
-    this.user_payload.set('gender', this.userFormElement.value.gender);
-    this.user_payload.set('maritial_status', this.userFormElement.value.maritial_status);
-    this.user_payload.set('avatar', this.file);
+    if(this.user_id == '') {
+      this.user_payload = new FormData();
+      this.user_payload.set('name', this.userFormElement.controls['name'].value);
+      this.user_payload.set('email', this.userFormElement.controls['email'].value);
+      this.user_payload.set('password', this.userFormElement.value.password);
+      this.user_payload.set('password_confirmation', this.userFormElement.value.password_confirmation);
+      this.user_payload.set('dob', this.userFormElement.value.dob);
+      this.user_payload.set('is_admin', this.userFormElement.value.is_admin);
+      this.user_payload.set('mobile', this.userFormElement.value.mobile);
+      this.user_payload.set('gender', this.userFormElement.value.gender);
+      this.user_payload.set('maritial_status', this.userFormElement.value.maritial_status);
+      this.user_payload.set('avatar', this.file);
+    } else {
+      this.user_payload = {
+        'name': this.userFormElement.value.name,
+        'email': this.userFormElement.value.email,
+        'password': this.userFormElement.value.password,
+        'password_confirmation': this.userFormElement.value.password_confirmation,
+        'dob': this.userFormElement.value.dob,
+        'is_admin': this.userFormElement.value.is_admin,
+        'mobile': this.userFormElement.value.mobile,
+        'gender': this.userFormElement.value.gender,
+        'maritial_status': this.userFormElement.value.maritial_status,
+        'avatar': this.file,
+      }
+    }
   }
 
   updateUser(){
     this.makeUserPayload()
-    // this.user_payload.append('_method', 'put');
     this._http.put(`users/${this.user_id}/edit`, this.user_payload).subscribe((response: any) => {
       this.responseStatus(response, "Updated", 'users')
       // this.form_type = "new"
