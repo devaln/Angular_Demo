@@ -34,13 +34,16 @@ export class SidenavbarComponent {
       icon: 'fa-tachometer-alt',
     },
     {
-      path: 'societies-forms/1',
-      cont: 'Society',
-      icon: 'fa-users',
-    },
-    {
       path: 'users',
       cont: 'Users',
+      icon: 'fa-users',
+    },
+  ]
+
+  sidebar_dropdown: sidebarMenu[] =[
+    {
+      path: 'societies-forms/1',
+      cont: 'Society',
       icon: 'fa-users',
     },
     {

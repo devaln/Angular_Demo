@@ -1,39 +1,33 @@
-<div class="col-lg-12">
-  <div class="card mb-4">
+<div class="container mb-3">
+  <div class="content">
     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
       <h6 class="m-0 font-weight-bold text-primary">Wings Index</h6>
       <button type="button" class="btn btn-primary mb-1" (click)="editUser('')">Create New</button>
     </div>
-    <div class="table-responsive p-3">
-      <table class="table align-items-center table-flush table-hover" id="dataTableHover">
-        <thead class="thead-light">
-          <tr>
-            <th>#Id</th>
-            <th>Name</th>
-            <th>Is Active</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tfoot>
-          <tr>
-            <th>#Id</th>
-            <th>Name</th>
-            <th>Is Active</th>
-            <th>Action</th>
-          </tr>
-        </tfoot>
-        <tbody>
-          <tr *ngFor="let val of itemsToDisplay">
-            <td>{{val.id}}</td>
-            <td>{{val.block_name}}</td>
-            <td>{{val.is_active}}</td>
-            <td><a (click)="editUser(val.id)" class="btn btn-info mr-3">Edit</a>
-              <a (click)="deleteUser(val.id)" class="btn btn-danger">Delete</a>
-            </td>
-        </tbody>
-      </table>
-      <app-pagination [current]="current" [total]="total" (goTo)="onGoTo($event)" (next)="onNext($event)"
-        (previous)="onPrevious($event)"></app-pagination>
-    </div>
+  </div>
+  <div class="row ml-4">
+      <div class="card col-md-3 mt-2 mr-2" *ngFor="let val of itemsToDisplay">
+          <div class="card-body">
+            <div class="text-muted text-xs text-right">
+              <a (click)="editUser(val.id)" class="mr-3"><i class="fa fa-cog"></i></a>
+              <a (click)="deleteUser(val.id)"><i class="fa fa-trash"></i></a>
+            </div>
+            <div class="row align-items-center">
+                <div class="col mr-2">
+                    <div class="text-xl mt-2 mb-0 font-weight-bold text-uppercase mb-1">
+                      <span class="text-success mr-2"><i class="fa fa-building"></i></span>
+                      <span>{{val.block_name}}</span>
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <i class=" fa-2x "></i>
+                </div>
+            </div>
+          </div>
+      </div>
+  </div>
+  <div class="mt-4">
+    <app-pagination [current]="current" [total]="total" (goTo)="onGoTo($event)" (next)="onNext($event)"
+    (previous)="onPrevious($event)"></app-pagination>
   </div>
 </div>

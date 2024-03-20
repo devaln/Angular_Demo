@@ -1,0 +1,7 @@
+.row{
+  padding: 0 5px 0 5px;
+}
+.card:hover {
+  transition: all 0.3s ease;
+  background: linear-gradient(90deg, #ffffff, #ccd5ff);
+}
