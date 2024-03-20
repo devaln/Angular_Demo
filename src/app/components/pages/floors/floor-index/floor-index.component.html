@@ -1,0 +1,47 @@
+<div class="col-lg-12">
+  <div class="card mb-4">
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+      <h6 class="m-0 font-weight-bold text-primary">Users Index</h6>
+      <button type="button" class="btn btn-primary mb-1" (click)="editFloor('')">Create New</button>
+    </div>
+    <div class="table-responsive">
+      <table class="table align-items-center table-flush table-hover" id="dataTableHover">
+        <thead class="thead-light">
+          <tr>
+            <th>#Id</th>
+            <th>Floor No.</th>
+            <th>Units/Floor</th>
+            <th>Date Of Birth</th>
+            <th>Wing</th>
+            <th>Created At</th>
+            <th colspan="2">Action</th>
+          </tr>
+        </thead>
+        <tfoot>
+          <tr>
+            <th>#Id</th>
+            <th>Floor No.</th>
+            <th>Units/Floor</th>
+            <th>Date Of Birth</th>
+            <th>Wing</th>
+            <th>Created At</th>
+            <th colspan="2">Action</th>
+          </tr>
+        </tfoot>
+        <tbody>
+          <tr *ngFor="let val of itemsToDisplay">
+            <td>{{val.id}}</td>
+            <td>{{val.floor_no ?? '--'}}</td>
+            <td>{{val.unit_per_floor ?? '--'}}</td>
+            <td>{{val.unit_serial_no ?? '--'}}</td>
+            <td>{{val.wings.block_name ?? '--'}}</td>
+            <td>{{val.created_at.split('T')[0]}}</td>
+            <td><a (click)="editFloor(val.id)" class="btn btn-info">Edit</a></td>
+            <td><a (click)="handleClick(val.id)" class="btn btn-danger">Delete</a></td>
+        </tbody>
+      </table>
+      <app-pagination [current]="current" [total]="total" (goTo)="onGoTo($event)" (next)="onNext($event)"
+        (previous)="onPrevious($event)"></app-pagination>
+    </div>
+  </div>
+</div>

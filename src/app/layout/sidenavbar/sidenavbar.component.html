@@ -8,9 +8,9 @@
     </a>
     <hr class="sidebar-divider my-0">
     <li class="nav-item" *ngFor="let sideMenu of sidebarMenu">
-        <a class="nav-link" [routerLink]="sideMenu.path">
+        <a class="nav-link" [routerLink]="sideMenu.url_path">
             <i class="fas fa-fw {{sideMenu.icon}}"></i>
-            <span>{{sideMenu.cont}}</span></a>
+            <span>{{sideMenu.content}}</span></a>
     </li>
     <!-- <hr class="sidebar-divider"> -->
     <!-- <div class="sidebar-heading">
@@ -25,7 +25,7 @@
         <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <!-- <h6 class="collapse-header">Bootstrap UI</h6> -->
-                <a class="collapse-item" *ngFor="let val of sidebar_dropdown" [routerLink]="val.path">{{val.cont}}</a>
+                <a class="collapse-item" *ngFor="let val of sidebar_dropdown" [routerLink]="val.url_path">{{val.content}}</a>
             </div>
         </div>
     </li>

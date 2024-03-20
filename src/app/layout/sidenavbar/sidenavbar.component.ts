@@ -7,8 +7,8 @@ import { catchError, retry } from 'rxjs/operators';
 // import { Title } from '@angular/platform-browser';
 
 interface sidebarMenu {
-  path: string;
-  cont: string;
+  url_path: string;
+  content: string;
   icon: string;
 }
 
@@ -29,26 +29,31 @@ export class SidenavbarComponent {
 
   sidebarMenu: sidebarMenu[] = [
     {
-      path: 'dashboard',
-      cont: 'Dashboard',
+      url_path: 'dashboard',
+      content: 'Dashboard',
       icon: 'fa-tachometer-alt',
     },
     {
-      path: 'users',
-      cont: 'Users',
+      url_path: 'users',
+      content: 'Users',
       icon: 'fa-users',
     },
   ]
 
   sidebar_dropdown: sidebarMenu[] =[
     {
-      path: 'societies-forms/1',
-      cont: 'Society',
+      url_path: 'societies-forms/1',
+      content: 'Society',
       icon: 'fa-users',
     },
     {
-      path: 'wings',
-      cont: 'Wings',
+      url_path: 'wings',
+      content: 'Wings',
+      icon: 'fa-users',
+    },
+    {
+      url_path: 'floors',
+      content: 'Floors',
       icon: 'fa-users',
     },
   ]

@@ -10,6 +10,8 @@ import { UserFormComponent } from './users/user-form/user-form.component';
 import { SocietyFormComponent } from './society/society-form/society-form.component';
 import { WingIndexComponent } from './wings/wing-index/wing-index.component';
 import { WingFormComponent } from './wings/wing-form/wing-form.component';
+import { FloorFormComponent } from './floors/floor-form/floor-form.component';
+import { FloorIndexComponent } from './floors/floor-index/floor-index.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { WingFormComponent } from './wings/wing-form/wing-form.component';
     SocietyFormComponent,
     WingIndexComponent,
     WingFormComponent,
+    FloorFormComponent,
+    FloorIndexComponent
   ],
   imports: [
     CommonModule,
