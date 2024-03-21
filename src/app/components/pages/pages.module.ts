@@ -12,6 +12,8 @@ import { WingIndexComponent } from './wings/wing-index/wing-index.component';
 import { WingFormComponent } from './wings/wing-form/wing-form.component';
 import { FloorFormComponent } from './floors/floor-form/floor-form.component';
 import { FloorIndexComponent } from './floors/floor-index/floor-index.component';
+import { FlatsFormComponent } from './flats/flats-form/flats-form.component';
+import { FlatsIndexComponent } from './flats/flats-index/flats-index.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { FloorIndexComponent } from './floors/floor-index/floor-index.component'
     WingIndexComponent,
     WingFormComponent,
     FloorFormComponent,
-    FloorIndexComponent
+    FloorIndexComponent,
+    FlatsFormComponent,
+    FlatsIndexComponent
   ],
   imports: [
     CommonModule,

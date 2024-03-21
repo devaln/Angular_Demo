@@ -11,6 +11,8 @@ import { WingIndexComponent } from './components/pages/wings/wing-index/wing-ind
 import { WingFormComponent } from './components/pages/wings/wing-form/wing-form.component';
 import { FloorFormComponent } from './components/pages/floors/floor-form/floor-form.component';
 import { FloorIndexComponent } from './components/pages/floors/floor-index/floor-index.component';
+import { FlatsFormComponent } from './components/pages/flats/flats-form/flats-form.component';
+import { FlatsIndexComponent } from './components/pages/flats/flats-index/flats-index.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
@@ -24,6 +26,8 @@ const routes: Routes = [
   { path: 'wing-form/:wing_id', component: WingFormComponent },
   { path: 'floors', component: FloorIndexComponent },
   { path: 'floors-form/:floor_id', component: FloorFormComponent },
+  { path: 'flats', component: FlatsIndexComponent },
+  { path: 'flats-form/:flat_id', component: FlatsFormComponent },
 ];
 
 @NgModule({

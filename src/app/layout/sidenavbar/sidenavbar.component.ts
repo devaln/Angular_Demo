@@ -28,34 +28,15 @@ export class SidenavbarComponent {
   Title = this.data.title;
 
   sidebarMenu: sidebarMenu[] = [
-    {
-      url_path: 'dashboard',
-      content: 'Dashboard',
-      icon: 'fa-tachometer-alt',
-    },
-    {
-      url_path: 'users',
-      content: 'Users',
-      icon: 'fa-users',
-    },
+    {url_path: 'dashboard', content: 'Dashboard', icon: 'fa-tachometer-alt'},
+    {url_path: 'users', content: 'Users', icon: 'fa-users'},
   ]
 
   sidebar_dropdown: sidebarMenu[] =[
-    {
-      url_path: 'societies-forms/1',
-      content: 'Society',
-      icon: 'fa-users',
-    },
-    {
-      url_path: 'wings',
-      content: 'Wings',
-      icon: 'fa-users',
-    },
-    {
-      url_path: 'floors',
-      content: 'Floors',
-      icon: 'fa-users',
-    },
+    {url_path: 'societies-forms/1', content: 'Society', icon: 'fa-users'},
+    {url_path: 'wings', content: 'Wings', icon: 'fa-users'},
+    {url_path: 'floors', content: 'Floors', icon: 'fa-users'},
+    {url_path: 'flats', content: 'Flats', icon: 'fa-users'},
   ]
 
   handleClick() {
