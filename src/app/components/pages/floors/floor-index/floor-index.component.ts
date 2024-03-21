@@ -40,17 +40,17 @@ export class FloorIndexComponent {
   }
 
   editFloor(floor_id: any){
-    this.router.navigateByUrl(`/user-form/${floor_id}`)
+    this.router.navigateByUrl(`/floors-form/${floor_id}`)
   }
 
   handleClick(floor_id: any){
     Swal.fire({
-      title: "Are you sure you want to logout?",
+      title: "Are you sure you want to delete this record?",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, Logout"
+      confirmButtonText: "Yes, Delete"
     }).then((result) => {
       if (result.isConfirmed) {
         this.deleteFloor(floor_id)

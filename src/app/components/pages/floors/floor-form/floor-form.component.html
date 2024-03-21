@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10">
+      <!-- Form Basic -->
+      <div class="card mb-4">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-primary" *ngIf="form_type == 'new'">Wing Create-Form</h6>
+          <h6 class="m-0 font-weight-bold text-primary" *ngIf="form_type == 'edit'">Wing Edit-Form</h6>
+          <div class="text-right"><button (click)="backBtn()" class="btn btn-dark mb-1">Back</button></div>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="floors_form">
+            <div class="row">
+              <!-- floor_no -->
+              <div class="form-group col-lg-6">
+                <label for="floor_no">Floor Number</label>
+                <input type="text" class="form-control" formControlName="floor_no" id="floor_no" required>
+                <!-- <div class="invalid-feedback">
+                  Please provide a valid details.
+                </div> -->
+              </div>
+              <!-- unit per floors -->
+              <div class="form-group col-lg-6">
+                <label for="unit_per_floor">Units Per Floor</label>
+                <input type="text" class="form-control" formControlName="unit_per_floor" id="unit_per_floor">
+                <!-- <div class="invalid-feedback">
+                  Please provide a valid details.
+                </div> -->
+              </div>
+              <!-- unit serial no -->
+              <div class="form-group col-lg-6">
+                <label for="unit_serial_no">Select Unit Serial No.</label>
+                <select class="select2-single-placeholder form-control" formControlName="unit_serial_no" name="unit_serial_no"
+                  id="wing_id">
+                  <option value="A,B,C,">A,B,C,...</option>
+                  <option value="1,2,3,">1,2,3,...</option>
+                </select>
+                <!-- <div class="invalid-feedback">
+                  Please provide a valid details.
+                </div> -->
+              </div>
+              <!-- wing_id -->
+              <div class="form-group col-lg-6">
+                <label for="wing_id">Select Wing</label>
+                <select class="select2-single-placeholder form-control" formControlName="wing_id" name="wing_id"
+                  id="wing_id">
+                  <option *ngFor="let val of wings" value="{{val.id}}">{{val.block_name}}</option>
+                </select>
+                <!-- <div class="invalid-feedback">
+                  Please provide a valid details.
+                </div> -->
+              </div>
+            </div>
+            <button class="btn btn-primary mb-1" [disabled]="floors_form.invalid" type="submit"
+              *ngIf="form_type == 'edit'" (click)="updateFloor()">Update</button>
+            <button class="btn btn-primary mb-1" [disabled]="floors_form.invalid" type="submit"
+              *ngIf="form_type != 'edit'" (click)="createFloor()">Create</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

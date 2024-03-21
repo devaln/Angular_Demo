@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import Swal from 'sweetalert2';
+import { ToastrService } from 'ngx-toastr';
+import { UsersService } from 'src/app/components/pages/auth/services/users.service';
 
 @Component({
   selector: 'app-header',
@@ -186,7 +189,7 @@ import { Component } from '@angular/core';
 
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="javascript:void(0);" data-toggle="modal"
-                        data-target="#logoutModal">
+                        data-target="#logoutModal" (click)="handleClick()">
                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                         Logout
                     </a>
@@ -202,4 +205,38 @@ import { Component } from '@angular/core';
 export class HeaderComponent {
   isLogin = sessionStorage.getItem("token") ? true : false
   userName = sessionStorage.getItem('full name')
+
+  constructor(
+    private http: UsersService,
+    private toastr: ToastrService
+  ){}
+
+  handleClick() {
+    Swal.fire({
+      title: "Are you sure you want to logout?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Logout"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.logoutFunction()
+      }
+    });
+  }
+
+  logoutFunction(){
+    this.http.post('auth/logout', sessionStorage.getItem('id')).subscribe((response) => {
+      if (response.status == true) {
+        console.log('===>', response)
+        this.toastr.success('Logged Out')
+        sessionStorage.clear()
+        location.reload()
+      }
+    }, err => {
+      this.toastr.error(err.error.message)
+      console.error(err.error.message)
+    })
+  }
 }

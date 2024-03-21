@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { UsersService } from '../../auth/services/users.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-wing-index',
@@ -39,6 +40,21 @@ export class WingIndexComponent {
 
   editUser(wing_id: any){
     this.router.navigateByUrl(`/wing-form/${wing_id}`)
+  }
+
+  handleClick(wing_id: any){
+    Swal.fire({
+      title: "Are you sure you want to delete this record?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Delete"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.deleteUser(wing_id)
+      }
+    });
   }
 
   deleteUser(wing_id: any){
