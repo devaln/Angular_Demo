@@ -29,7 +29,7 @@ export class FlatsIndexComponent {
   }
 
   getFlats(){
-    this.https.get('').subscribe((response: any) => {
+    this.https.get('flats').subscribe((response: any) => {
       this.data = response.data
       this.total = Math.ceil(this.data.length / this.perPage)
       this.itemsToDisplay = this.paginate(this.current, this.perPage)
@@ -38,7 +38,7 @@ export class FlatsIndexComponent {
     })
   }
 
-  editFlats(flat_id: any){ this.router.navigateByUrl(`flats/${flat_id}`) }
+  editFlats(flat_id: any){ this.router.navigateByUrl(`flats-form/${flat_id}`) }
 
   handleClick(flat_id: any){
     Swal.fire({

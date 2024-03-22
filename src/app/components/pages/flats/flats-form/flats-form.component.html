@@ -1,0 +1,73 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10">
+      <!-- Form Basic -->
+      <div class="card mb-4">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-primary" *ngIf="form_type == 'new'">Flat Create-Form</h6>
+          <h6 class="m-0 font-weight-bold text-primary" *ngIf="form_type == 'edit'">Flat Edit-Form</h6>
+          <div class="text-right"><button (click)="backBtn()" class="btn btn-dark mb-1">Back</button></div>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="flat_form">
+            <div class="row">
+              <!-- Flat_no -->
+              <div class="form-group col-lg-6">
+                <label for="flat_no">Flat Number. </label>
+                <input type="text" class="form-control" formControlName="flat_no" id="flat_no" required>
+                <!-- <div class="invalid-feedback">
+                  Please provide a valid details.
+                </div> -->
+              </div>
+              <!-- Area -->
+              <div class="form-group col-lg-6">
+                <label for="area">Area Of Flat(sq.ft)</label>
+                <input type="text" class="form-control" formControlName="area" id="area">
+                <!-- <div class="invalid-feedback">
+                  Please provide a valid details.
+                </div> -->
+              </div>
+              <!-- owner_id -->
+              <div class="form-group col-lg-6">
+                <label for="owner_id">Select Owner</label>
+                <select class="select2-single-placeholder form-control" formControlName="owner_id" name="owner_id"
+                  id="owner_id">
+                  <option *ngFor="let val of users" value="{{val.id}}">{{val.name}}</option>
+                </select>
+                <!-- <div class="invalid-feedback">
+                  Please provide a valid details.
+                </div> -->
+              </div>
+              <!-- wing_id -->
+              <div class="form-group col-lg-6">
+                <label for="wing_id">Select Wing</label>
+                <select class="select2-single-placeholder form-control" formControlName="wing_id" name="wing_id"
+                  id="wing_id">
+                  <option *ngFor="let val of wings" value="{{val.id}}">{{val.block_name}}</option>
+                </select>
+                <!-- <div class="invalid-feedback">
+                  Please provide a valid details.
+                </div> -->
+              </div>
+              <!-- wing_id -->
+              <div class="form-group col-lg-6">
+                <label for="floor_id">Select Floor</label>
+                <select class="select2-single-placeholder form-control" formControlName="floor_id" name="floor_id"
+                  id="floor_id">
+                  <option *ngFor="let val of floors" value="{{val.id}}">Floor No.{{val.floor_no}}</option>
+                </select>
+                <!-- <div class="invalid-feedback">
+                  Please provide a valid details.
+                </div> -->
+              </div>
+            </div>
+            <button class="btn btn-primary mb-1" [disabled]="flat_form.invalid" type="submit"
+              *ngIf="form_type == 'edit'" (click)="updateFlat()">Update</button>
+            <button class="btn btn-primary mb-1" [disabled]="flat_form.invalid" type="submit"
+              *ngIf="form_type != 'edit'" (click)="createFlat()">Create</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
